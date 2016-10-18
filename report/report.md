@@ -76,7 +76,7 @@ link 'lsw2', 'host3'
 link 'lsw2', 'host4'
 ```
 
-概念図
+(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig1.jpg)
 
 また，動作手順を以下に記す．
 
@@ -97,7 +97,7 @@ PacketInを受信したコントローラは，lsw1のFDB(FDB1)を更新し，
 フラッディングモードを指定したPacketOutをlsw1へ送信する．
 以下の図に手順1の一連の動作を示す．
 
-動作図1
+(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig2.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -122,7 +122,7 @@ host2からhost1へのパケットのフローエントリをFlowTableに書き�
 PacketOutメッセージを送信する．
 以下の図に手順2の一連の動作を示す．
 
-動作図2
+(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig3.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -151,7 +151,7 @@ host1からhost2へのパケットのフローエントリをFlowTableに書き�
 PacketOutメッセージを送信する．
 以下の図に手順3の一連の動作を示す．
 
-動作図3
+(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig4.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -185,7 +185,7 @@ cookie=0x0, duration=15.382s, table=0, n_packets=0, n_bytes=0, idle_age=15, prio
 リンクも存在しないため，パケットはhost3へは到達しない．
 以下の図に手順7の一連の動作を示す．
 
-動作図7
+(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig5.jpg)
 
 また，動作結果を以下に示す．
 ```
