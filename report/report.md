@@ -48,11 +48,11 @@ FlowMod，PacketOutの制御を行うflow_mod_and_packet_outメソッドのコ�
 34  end
 ```
 PacketInの対象となるスイッチのFDBに，PacketInメッセージの宛先MACアドレスとポート番号が
-登録されているかを確認する．
+登録されているかを確認する(31行目)．
 宛先MACアドレスとそれに対応するポート番号がFDBに登録されている場合，flow_modメソッドを
-呼び出し，FlowModの処理を行う．
+呼び出し，FlowModの処理を行う(32行目)．
 最後に，宛先MACアドレスがFDBに登録されているかどうかに関わらず，packet_outメソッドを
-呼び出し，PacketOutの処理を行う．
+呼び出し，PacketOutの処理を行う(33行目)．
 このとき，宛先MACアドレスとそれに対応するポート番号がFDBに登録されていない場合は，
 PacketOutメッセージをフラッディングで出力するように，オプションを指定する．
 flow_modメソッド，packet_outメソッドについては，特筆すべき変更点がないので，
@@ -60,7 +60,7 @@ flow_modメソッド，packet_outメソッドについては，特筆すべき�
 
 ###ラーニングスイッチの動作の解説
 2つのスイッチが存在する環境における，ラーニングスイッチの動作の解説を行う．
-動作環境の設定ファイル(trema.multi.conf)と概念図を以下に示す．
+動作環境の設定ファイル(trema.multi.conf)の内容と概念図を以下に示す．
 ```
 vswitch('lsw1') { datapath_id 0x1 }
 vswitch('lsw2') { datapath_id 0x2 }
@@ -76,7 +76,7 @@ link 'lsw2', 'host3'
 link 'lsw2', 'host4'
 ```
 
-(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig1.jpg)
+![fig1](https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig1.jpg)
 
 また，動作手順を以下に記す．
 
@@ -97,7 +97,7 @@ PacketInを受信したコントローラは，lsw1のFDB(FDB1)を更新し，
 フラッディングモードを指定したPacketOutをlsw1へ送信する．
 以下の図に手順1の一連の動作を示す．
 
-(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig2.jpg)
+![fig2](https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig2.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -122,7 +122,7 @@ host2からhost1へのパケットのフローエントリをFlowTableに書き�
 PacketOutメッセージを送信する．
 以下の図に手順2の一連の動作を示す．
 
-(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig3.jpg)
+![fig3](https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig3.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -151,7 +151,7 @@ host1からhost2へのパケットのフローエントリをFlowTableに書き�
 PacketOutメッセージを送信する．
 以下の図に手順3の一連の動作を示す．
 
-(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig4.jpg)
+![fig4](https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig4.jpg)
 
 また，動作結果を以下に示す．
 ```
@@ -185,7 +185,7 @@ cookie=0x0, duration=15.382s, table=0, n_packets=0, n_bytes=0, idle_age=15, prio
 リンクも存在しないため，パケットはhost3へは到達しない．
 以下の図に手順7の一連の動作を示す．
 
-(https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig5.jpg)
+![fig5](https://github.com/handai-trema/learning-switch-nsyuyu/blob/master/fig5.jpg)
 
 また，動作結果を以下に示す．
 ```
